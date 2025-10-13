@@ -36,9 +36,7 @@ impl Graph for UndirectedGraph {
         if !neighbors1.iter().any(|(n, _)| n == node2) {
             neighbors1.push((node2.to_string(), weight));
         }
-        let neighbors2 = self.adjacency_table_mutable()
-            .get_mut(node2)
-            .unwrap();
+        let neighbors2 = self.adjacency_table_mutable().get_mut(node2).unwrap();
         if !neighbors2.iter().any(|(n, _)| n == node1) {
             neighbors2.push((node1.to_string(), weight));
         }
