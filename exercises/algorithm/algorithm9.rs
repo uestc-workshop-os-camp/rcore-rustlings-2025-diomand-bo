@@ -43,6 +43,7 @@ where
         while idx > 1 {
             let parent_idx=self.parent_idx(idx);
             if (self.comparator)(&self.items[idx],&self.items[parent_idx]){
+                self.items.swap(idx,parent_idx);
                 idx=parent_idx;
             }else{
                 break;
@@ -68,10 +69,10 @@ where
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
         //TODO
-		let left_idx=self.left_child_idx();
-        let right_idx=self.right_child_idx();
-        if right_idx > self.count(){
-            self.left_idx
+		let left_idx=self.left_child_idx(idx);
+        let right_idx=self.right_child_idx(idx);
+        if right_idx > self.count{
+            left_idx
         }else{
             if (self.comparator)(&self.items[left_idx],&self.items[right_idx]){
                 left_idx
